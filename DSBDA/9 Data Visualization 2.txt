@@ -1,0 +1,24 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Sample data similar to Titanic dataset
+data = {
+    'survived': [0, 1, 1, 1, 0, 0, 1, 0, 1, 1],
+    'pclass': [3, 1, 3, 1, 3, 3, 1, 3, 3, 2],
+    'sex': ['male', 'female', 'female', 'female', 'male', 'male', 'male', 'male', 'female', 'female'],
+    'age': [22, 38, 26, 35, 35, None, 54, 2, 27, 14],
+    'fare': [7.25, 71.2833, 7.925, 53.1, 8.05, 8.4583, 51.8625, 21.075, 11.1333, 30.0708]
+}
+
+# Convert sample data to DataFrame
+titanic = pd.DataFrame(data)
+
+# Plotting box plot for age distribution with respect to gender and survival
+plt.figure(figsize=(10, 6))
+sns.boxplot(data=titanic, x='sex', y='age', hue='survived')
+plt.title('Age Distribution by Gender and Survival')
+plt.xlabel('Gender')
+plt.ylabel('Age')
+plt.legend(title='Survived', loc='upper right', labels=['No', 'Yes'])
+plt.show()
